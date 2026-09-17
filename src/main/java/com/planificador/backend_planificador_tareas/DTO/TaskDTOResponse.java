@@ -1,4 +1,4 @@
-package com.planificador.backend_planificador_tareas.dto;
+package com.planificador.backend_planificador_tareas.DTO;
 
 import java.time.LocalDate;
 

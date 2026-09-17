@@ -1,7 +1,7 @@
 package com.planificador.backend_planificador_tareas.controller;
 
-import com.planificador.backend_planificador_tareas.dto.TaskDTORequest;
-import com.planificador.backend_planificador_tareas.dto.TaskDTOResponse;
+import com.planificador.backend_planificador_tareas.DTO.TaskDTORequest;
+import com.planificador.backend_planificador_tareas.DTO.TaskDTOResponse;
 import com.planificador.backend_planificador_tareas.model.Task;
 import com.planificador.backend_planificador_tareas.service.TaskService;
 import io.swagger.v3.oas.annotations.Operation;

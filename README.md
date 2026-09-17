@@ -42,3 +42,21 @@ API RESTful desarrollada en **Spring Boot** para la gestión e integración del 
   "status": "PENDING",
   "priority": "Alta"
 }
+El backend del **Planificador de Tareas** se encuentra completamente finalizado y funcional.
+
+Actualmente cuenta con:
+
+- ✅ API REST desarrollada con Spring Boot.
+- ✅ Persistencia de datos con PostgreSQL mediante Supabase.
+- ✅ Operaciones CRUD para la gestión de tareas.
+- ✅ Validación de datos.
+- ✅ Documentación interactiva mediante Swagger / OpenAPI.
+- ✅ Despliegue en Render.
+- ✅ Integración funcional con el frontend.
+- ✅ Comunicación entre frontend y backend mediante API REST.
+- ✅ Persistencia de la información en la base de datos.
+
+### 🚀 Proyecto Finalizado
+
+El backend se encuentra listo para ser utilizado junto con el frontend del **Planificador de Tareas**, permitiendo gestionar las tareas de forma persistente mediante una API REST desplegada en la nube.
+git

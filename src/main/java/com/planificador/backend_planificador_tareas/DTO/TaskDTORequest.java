@@ -1,4 +1,4 @@
-package com.planificador.backend_planificador_tareas.dto;
+package com.planificador.backend_planificador_tareas.DTO;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
