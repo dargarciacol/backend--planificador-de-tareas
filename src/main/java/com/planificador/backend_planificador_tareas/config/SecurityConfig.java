@@ -45,8 +45,9 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        // Orígenes permitidos (Tu Netlify y entornos locales)
+        // Orígenes permitidos (GitHub Pages, Netlify y entornos locales)
         configuration.setAllowedOrigins(Arrays.asList(
+                "https://dargarciacol.github.io", // <-- ¡Añadido!
                 "https://transcendent-sprite-c0615c.netlify.app",
                 "http://127.0.0.1:5500",
                 "http://localhost:5500"
