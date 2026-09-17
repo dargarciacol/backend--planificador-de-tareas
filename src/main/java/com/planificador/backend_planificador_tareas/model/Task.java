@@ -26,20 +26,26 @@ public class Task {
 
     @NotBlank(message = "El estado es requerido")
     @Column(nullable = false)
-    private String status = "PENDING"; // Valores sugeridos: PENDING, IN_PROGRESS, DONE
+    private String status = "PENDING"; // PENDING, IN_PROGRESS, DONE
 
     private String priority; // 'Alta', 'Media', 'Baja'
 
-    // Constructor vacío (requerido por JPA)
+    // Relación ManyToOne con User (Clave foránea user_id)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    // Constructor vacío
     public Task() {}
 
     // Constructor con parámetros
-    public Task(String name, String description, LocalDate dueDate, String status, String priority) {
+    public Task(String name, String description, LocalDate dueDate, String status, String priority, User user) {
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
         this.status = status;
         this.priority = priority;
+        this.user = user;
     }
 
     // Getters y Setters
@@ -89,5 +95,13 @@ public class Task {
 
     public void setPriority(String priority) {
         this.priority = priority;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
