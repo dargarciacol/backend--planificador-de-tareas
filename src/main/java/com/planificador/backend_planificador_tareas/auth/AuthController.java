@@ -6,6 +6,8 @@ import com.planificador.backend_planificador_tareas.DTO.RegisterRequestDTO;
 import com.planificador.backend_planificador_tareas.DTO.RegisterResponseDTO;
 import com.planificador.backend_planificador_tareas.model.User;
 import com.planificador.backend_planificador_tareas.service.UserService;
+// Importa tu proveedor de tokens real (asegúrate de que el nombre coincida con el tuyo)
+import com.planificador.backend_planificador_tareas.security.JwtTokenProvider;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -21,10 +22,12 @@ import java.util.UUID;
 public class AuthController {
 
     private final UserService userService;
+    private final JwtTokenProvider jwtTokenProvider; // Inyectamos tu proveedor de JWT
 
     @Autowired
-    public AuthController(UserService userService) {
+    public AuthController(UserService userService, JwtTokenProvider jwtTokenProvider) {
         this.userService = userService;
+        this.jwtTokenProvider = jwtTokenProvider;
     }
 
     /**
@@ -41,7 +44,8 @@ public class AuthController {
 
             User savedUser = userService.registerUser(newUser);
 
-            String token = "session_token_" + UUID.randomUUID().toString();
+            // Generar el JWT real usando tu JwtTokenProvider
+            String token = jwtTokenProvider.generateToken(savedUser.getEmail());
 
             RegisterResponseDTO response = new RegisterResponseDTO(
                     "Usuario registrado exitosamente",
@@ -73,7 +77,9 @@ public class AuthController {
 
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            String token = "session_token_" + UUID.randomUUID().toString();
+
+            // Generar el JWT real usando tu JwtTokenProvider
+            String token = jwtTokenProvider.generateToken(user.getEmail());
 
             LoginResponseDTO response = new LoginResponseDTO(
                     "Inicio de sesión exitoso",
