@@ -43,13 +43,13 @@ public class TaskController {
     }
 
     private Task convertToEntity(TaskDTORequest dto) {
-        return new Task(
-                dto.getName(),
-                dto.getDescription(),
-                dto.getDueDate(),
-                dto.getStatus(),
-                dto.getPriority()
-        );
+        Task task = new Task();
+        task.setName(dto.getName());
+        task.setDescription(dto.getDescription());
+        task.setDueDate(dto.getDueDate());
+        task.setStatus(dto.getStatus());
+        task.setPriority(dto.getPriority());
+        return task;
     }
 
     // 1. GET /api/tasks - Recupera todas las tareas
